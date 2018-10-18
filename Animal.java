@@ -190,5 +190,21 @@ public class Animal implements ParkGUI {
     // This method should be overridden by a subclasse
   }
   
+  /**
+   * Check's if otherAnimal is located within range distance around the current animal.
+   * 
+   * @param otherAnimal reference to another animal
+   * @param range proximity range given
+   * @return true if the animal is being within range, false otherwise
+   * 
+   */
+  public boolean isClose(Animal otherAnimal, int range) {
+    
+    
+    if(distance(otherAnimal) < range) 
+     return true;
+    else 
+      return false; }
+  
 
 }

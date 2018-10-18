@@ -60,8 +60,13 @@ public class JunglePark extends PApplet {
     this.image(backgroundImage, this.width / 2, this.height / 2); // draw the background image at
     // the center of the display window
     // traverse the tigers array and draw each stored tiger
-    for (int i = 0; i < listGUI.size(); i++)
+    for (int i = 0; i < listGUI.size(); i++) {
       listGUI.get(i).draw();
+      Animal animal = (Animal) listGUI.get(i);
+      animal.action();
+      
+//      System.out.println(listGUI.get(i));
+    }
   }
 
   /**
@@ -97,6 +102,9 @@ public class JunglePark extends PApplet {
     switch (Character.toUpperCase(this.key)) {
       case 'T': // add new tiger to the Jungle Park
         listGUI.add(new Tiger(this));
+        break;
+      case 'D': // add new tiger to the Jungle Park
+        listGUI.add(new Deer(this));
         break;
       case 'R': // remove an animal from the Jungle Park if the mouse is over it
         // traverse the listGUI list and consider only animal objects to be removed if any
