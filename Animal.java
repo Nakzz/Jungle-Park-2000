@@ -1,14 +1,49 @@
-/**
- * File Header must go here
- */
+//////////////////// ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////
+//
+// Title: Jungle Park 200
+// Files: JunglePark.java, ParkGUI.java, Animal.java, Button.java, Tiger.java,
+// Deer.java, AddAnimalButton.java, ClearButton.java, JungleParkTests.java
+// Course: CS300, Fall 2018
+//
+// Author: Ajmain Naqib
+// Email: naqib@wisc.edu
+// Lecturer's Name: Gary Dahl
+//
+//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ///////////////////
+//
+// Partner Name:
+// Partner Email:
+// Partner Lecturer's Name:
+//
+// VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:
+// __ Write-up states that pair programming is allowed for this assignment.
+// __ We have both read and understand the course Pair Programming Policy.
+// __ We have registered our team prior to the team registration deadline.
+//
+///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////
+//
+// Students who get help from sources other than their partner must fully
+// acknowledge and credit those sources of help here. Instructors and TAs do
+// not need to be credited here, but tutors, friends, relatives, room mates,
+// strangers, and others do. If you received no outside help from either type
+// of source, then please explicitly indicate NONE.
+//
+// Persons: None
+// Online Sources: None
+//
+/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////
+
 import java.util.Random;
+
 /**
- * This class represents an animal in the Jungle Park application
- * It implements the interface ParkGUI
- * @author Mouna Kacem
+ * This class represents an animal in the Jungle Park application It implements the interface
+ * ParkGUI
+ * 
+ * @author: Ajmain Naqib, Mouna Kacem
+ * @email: naqib@wisc.edu
  */
 public class Animal implements ParkGUI {
-  
+
   private static Random randGen = new Random(); // Generator of random numbers
   protected String label; // represents the animal's identifier
   // Fields defined to draw the animal in the application display window
@@ -45,7 +80,8 @@ public class Animal implements ParkGUI {
    */
   public Animal(JunglePark processing, String imageFileName) {
     this(processing, (float) randGen.nextInt(processing.width),
-        Math.max((float) randGen.nextInt(processing.height), 100), imageFileName);
+      Math.max((float) randGen.nextInt(processing.height), 100), imageFileName);
+    // places Animal at random position within the range of the window
   }
 
   /**
@@ -76,7 +112,7 @@ public class Animal implements ParkGUI {
     this.processing.image(this.image, this.position[0], position[1]);
     // display label
     displayLabel();
-    
+
   }
 
 
@@ -86,13 +122,12 @@ public class Animal implements ParkGUI {
   private void displayLabel() {
     this.processing.fill(0); // specify font color: black
     this.processing.text(label, this.position[0], this.position[1] + this.image.height / 2 + 4);// display
-                                                                                                // label                                                                                              // text
+                                                                                                // label // text
   }
 
   /**
-   * Checks if the mouse is over the given tiger object
+   * Checks if the mouse is over this tiger object
    * 
-   * @param tiger reference to a given Tiger object
    * @return true if the mouse is over the given tiger object, false otherwise
    */
   @Override
@@ -102,27 +137,36 @@ public class Animal implements ParkGUI {
 
     // checks if the mouse is over the tiger
     if (processing.mouseX > position[0] - tigerWidth / 2
-        && processing.mouseX < position[0] + tigerWidth / 2
-        && processing.mouseY > position[1] - tigerHeight / 2
-        && processing.mouseY < position[1] + tigerHeight / 2) {
+      && processing.mouseX < position[0] + tigerWidth / 2
+      && processing.mouseY > position[1] - tigerHeight / 2
+      && processing.mouseY < position[1] + tigerHeight / 2) {
       return true;
     }
     return false;
   }
 
+  /**
+   * Callback method called each time the user presses the mouse. Set's object's dragging status to
+   * true.
+   */
   @Override
   public void mousePressed() {
     if (isMouseOver())
       isDragging = true;
   }
 
+  /**
+   * Callback method called each time the mouse is released Set's object's dragging status to false.
+   */
   @Override
   public void mouseReleased() {
     isDragging = false;
   }
 
   /**
-   * @return the label that represents the tiger's identifier
+   * Returns the label of the object
+   * 
+   * @return the label that represents the animal's identifier
    */
   public String getLabel() {
     return label;
@@ -130,7 +174,9 @@ public class Animal implements ParkGUI {
 
 
   /**
-   * @return the image of type PImage of the tiger object
+   * Returns the label of the object
+   * 
+   * @return the image of type PImage of the animal's object
    */
   public PImage getImage() {
     return image;
@@ -138,13 +184,17 @@ public class Animal implements ParkGUI {
 
 
   /**
-   * @return the X coordinate of the animal position
+   * Returns X coordinate of the animal's position
+   * 
+   * @return the X coordinate of the animal's position
    */
   public float getPositionX() {
     return position[0];
   }
 
   /**
+   * Returns Y coordinate of the animal's position
+   * 
    * @return the Y coordinate of the animal position
    */
   public float getPositionY() {
@@ -153,6 +203,8 @@ public class Animal implements ParkGUI {
 
 
   /**
+   * Sets X coordinate of the animal's position
+   * 
    * @param position the XPosition to set
    */
   public void setPositionX(float position) {
@@ -160,6 +212,8 @@ public class Animal implements ParkGUI {
   }
 
   /**
+   * Sets Y coordinate of the animal's position
+   * 
    * @param position the YPosition to set
    */
   public void setPositionY(float position) {
@@ -167,6 +221,8 @@ public class Animal implements ParkGUI {
   }
 
   /**
+   * Returns the state of animal's dragging condition
+   * 
    * @return true if the animal is being dragged, false otherwise
    */
   public boolean isDragging() {
@@ -175,21 +231,22 @@ public class Animal implements ParkGUI {
 
   /**
    * Computes the euclidean distance between the current animal and another one
+   * 
    * @param otherAnimal reference to another animal
    * @return distance between the current animal and otherAnimal
    */
   public double distance(Animal otherAnimal) {
     return Math.sqrt(Math.pow(this.getPositionX() - otherAnimal.getPositionX(), 2)
-        + Math.pow(this.getPositionY() - otherAnimal.getPositionY(), 2));
+      + Math.pow(this.getPositionY() - otherAnimal.getPositionY(), 2));
   }
-  
+
   /**
    * Defines the behavior of the current animal in the jungle park
    */
   public void action() {
     // This method should be overridden by a subclasse
   }
-  
+
   /**
    * Check's if otherAnimal is located within range distance around the current animal.
    * 
@@ -199,12 +256,12 @@ public class Animal implements ParkGUI {
    * 
    */
   public boolean isClose(Animal otherAnimal, int range) {
-    
-    
-    if(distance(otherAnimal) < range) 
-     return true;
-    else 
-      return false; }
-  
+
+
+    if (distance(otherAnimal) < range) // if within range
+      return true;
+    else
+      return false;
+  }
 
 }

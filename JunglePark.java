@@ -1,15 +1,49 @@
-/**
- * File header comes here
- *
- */
+//////////////////// ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////
+//
+// Title: Jungle Park 200
+// Files: JunglePark.java, ParkGUI.java, Animal.java, Button.java, Tiger.java, 
+// Deer.java, AddAnimalButton.java, ClearButton.java, JungleParkTests.java
+// Course: CS300, Fall 2018
+//
+// Author: Ajmain Naqib
+// Email: naqib@wisc.edu
+// Lecturer's Name: Gary Dahl
+//
+//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ///////////////////
+//
+// Partner Name:
+// Partner Email:
+// Partner Lecturer's Name:
+//
+// VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:
+// __ Write-up states that pair programming is allowed for this assignment.
+// __ We have both read and understand the course Pair Programming Policy.
+// __ We have registered our team prior to the team registration deadline.
+//
+///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////
+//
+// Students who get help from sources other than their partner must fully
+// acknowledge and credit those sources of help here. Instructors and TAs do
+// not need to be credited here, but tutors, friends, relatives, room mates,
+// strangers, and others do. If you received no outside help from either type
+// of source, then please explicitly indicate NONE.
+//
+// Persons: None
+// Online Sources: None
+//
+/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////
+
+
 import java.util.ArrayList;
 
 /**
- * Class Header comes here
+ * The JunglePark class which contains the graphical interface of the program.
  * 
- * @author Mouna Kacem
- *
+ * @author: Ajmain Naqib, Mouna Kacem
+ * @email: naqib@wisc.edu
+ * 
  */
+
 public class JunglePark extends PApplet {
   private PImage backgroundImage; // PImage object that represents the background image
   protected ArrayList<ParkGUI> listGUI; // ArrayList storing the current graphical objects (animals present
@@ -17,9 +51,9 @@ public class JunglePark extends PApplet {
 
 
   /**
-   * CallBack method Defines initial environment properties such as screen size and to load
-   * background images and fonts as the program starts Initializes the backgroundImage and listGUI
-   * instance fields.
+   * CallBack method Defines initial environment properties such as screen size and to load background
+   * images and fonts as the program starts Initializes the backgroundImage and listGUI instance
+   * fields.
    */
   @Override
   public void setup() {
@@ -37,11 +71,11 @@ public class JunglePark extends PApplet {
 
     listGUI = new ArrayList<ParkGUI>(); // create the listGUI ArrayList that would store all the
     // graphic objects (animals and buttons) that would be drawn on the display window
-    
-    listGUI.add(new AddAnimalButton("Tiger", 43,16, this));
-    listGUI.add(new AddAnimalButton("Deer", 129,16, this));
-    listGUI.add(new ClearButton(215,16, this));
-    
+
+    listGUI.add(new AddAnimalButton("Tiger", 43, 16, this)); // Add button object to the PApplet Window
+    listGUI.add(new AddAnimalButton("Deer", 129, 16, this)); // Add button object to the PApplet Window
+    listGUI.add(new ClearButton(215, 16, this)); // Add button object to the PApplet Window
+
   }
 
   /**
@@ -63,16 +97,13 @@ public class JunglePark extends PApplet {
     this.image(backgroundImage, this.width / 2, this.height / 2); // draw the background image at
     // the center of the display window
     // traverse the tigers array and draw each stored tiger
-    for (int i = 0; i < listGUI.size(); i++) {
-      listGUI.get(i).draw();
-      if(listGUI.get(i) instanceof Animal) {
-        Animal animal = (Animal) listGUI.get(i);
-        animal.action();
+
+    for (int i = 0; i < listGUI.size(); i++) { // iterates through GUI objects
+      listGUI.get(i).draw(); // draw's the object
+      if (listGUI.get(i) instanceof Animal) { // if the object is Animal type
+        Animal animal = (Animal) listGUI.get(i); // cast to Animal type
+        animal.action(); // perform action
       }
-      
-      
-      
-//      System.out.println(listGUI.get(i));
     }
   }
 
@@ -83,9 +114,9 @@ public class JunglePark extends PApplet {
   public void mousePressed() {
     // traverse listGUI and call mousePressed() of the first graphical object which the mouse is
     // over
-    for (int i = 0; i < listGUI.size(); i++)
-      if (listGUI.get(i).isMouseOver()) {
-        listGUI.get(i).mousePressed();
+    for (int i = 0; i < listGUI.size(); i++) // iterates through GUI objects
+      if (listGUI.get(i).isMouseOver()) { // if cursor is over the object
+        listGUI.get(i).mousePressed(); // press Mouse click
         break;
       }
   }
@@ -96,8 +127,8 @@ public class JunglePark extends PApplet {
   @Override
   public void mouseReleased() {
     // traverse listGUI and call mouseReleased() method defined for every graphic object
-    for (int i = 0; i < listGUI.size(); i++)
-      listGUI.get(i).mouseReleased();
+    for (int i = 0; i < listGUI.size(); i++) // iterates through GUI objects
+      listGUI.get(i).mouseReleased(); // releases mouse click
   }
 
   /**
@@ -108,16 +139,16 @@ public class JunglePark extends PApplet {
 
     switch (Character.toUpperCase(this.key)) {
       case 'T': // add new tiger to the Jungle Park
-        listGUI.add(new Tiger(this));
+        listGUI.add(new Tiger(this)); // adds new Tiger object to GUI objects list
         break;
       case 'D': // add new tiger to the Jungle Park
-        listGUI.add(new Deer(this));
+        listGUI.add(new Deer(this)); // adds new Deer object to GUI objects list
         break;
       case 'R': // remove an animal from the Jungle Park if the mouse is over it
         // traverse the listGUI list and consider only animal objects to be removed if any
         for (int i = 0; i < listGUI.size(); i++) {
           if (listGUI.get(i) instanceof Animal && listGUI.get(i).isMouseOver()) {
-            listGUI.remove(i);
+            listGUI.remove(i); // removes object from GUI objects list
             break; // remove the first animal which the mouse is over it while the r-key is pressed
           }
         }
@@ -130,10 +161,10 @@ public class JunglePark extends PApplet {
    * Removes all the animals from the park
    */
   public void clear() {
-    for (int i = 0; i < listGUI.size(); i++) {
-      if (listGUI.get(i) instanceof Animal) {
-        listGUI.remove(i);
-        i--;
+    for (int i = 0; i < listGUI.size(); i++) { // iterates through GUI objects
+      if (listGUI.get(i) instanceof Animal) { // if Animal type
+        listGUI.remove(i); // remove object
+        i--; // go to previous index
       }
     }
   }

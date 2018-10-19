@@ -1,4 +1,50 @@
+//////////////////// ALL ASSIGNMENTS INCLUDE THIS SECTION /////////////////////
+//
+// Title: Jungle Park 200
+// Files: JunglePark.java, ParkGUI.java, Animal.java, Button.java, Tiger.java,
+// Deer.java, AddAnimalButton.java, ClearButton.java, JungleParkTests.java
+// Course: CS300, Fall 2018
+//
+// Author: Ajmain Naqib
+// Email: naqib@wisc.edu
+// Lecturer's Name: Gary Dahl
+//
+//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ///////////////////
+//
+// Partner Name:
+// Partner Email:
+// Partner Lecturer's Name:
+//
+// VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:
+// __ Write-up states that pair programming is allowed for this assignment.
+// __ We have both read and understand the course Pair Programming Policy.
+// __ We have registered our team prior to the team registration deadline.
+//
+///////////////////////////// CREDIT OUTSIDE HELP /////////////////////////////
+//
+// Students who get help from sources other than their partner must fully
+// acknowledge and credit those sources of help here. Instructors and TAs do
+// not need to be credited here, but tutors, friends, relatives, room mates,
+// strangers, and others do. If you received no outside help from either type
+// of source, then please explicitly indicate NONE.
+//
+// Persons: None
+// Online Sources: None
+//
+/////////////////////////////// 80 COLUMNS WIDE ///////////////////////////////
+
+
 import java.util.ArrayList;
+
+
+/**
+ * This class contains the testing for Jungle Park program.
+ * 
+ * @author: Ajmain Naqib
+ * @email: naqib@wisc.edu
+ *
+ */
+
 
 public class JungleParkTests extends JunglePark {
 
@@ -7,8 +53,8 @@ public class JungleParkTests extends JunglePark {
 
   /**
    * This method checks whether isClose() called by a Deer returns true if a tiger is within its
-   * scanRange area and false if called with another tiger as input parameter located outside 
-   * the scanRange area
+   * scanRange area and false if called with another tiger as input parameter located outside the
+   * scanRange area
    * 
    * @return true when test verifies correct functionality, and false otherwise.
    */
@@ -45,65 +91,120 @@ public class JungleParkTests extends JunglePark {
   }
 
   /**
+   * 
    * This method checks whether isClose() called by a Tiger returns false if another tiger is
    * located outside its scanRange area
    * 
    * @return true when test verifies correct functionality, and false otherwise.
+   * 
    */
+
   public static boolean test2isCloseMethod() {
+
     boolean passed = true;
-    // TODO Define your test scenario here
+    Deer d = new Deer(park); // creates instance of deer
+    Tiger t1 = new Tiger(park); // creates instances of tiger
+    
+    // Set deer at coordinates to (300,100)
+    d.setPositionX(300); 
+    d.setPositionY(100);
+    
+    // Set first tiger at position(400,200)
+    t1.setPositionX(400); 
+    t1.setPositionY(200);
+    
+    if (d.isClose(t1, 50)) { // isClose() should return false here
+      System.out.println("Deer's isClose is returning true when it should return false.");
+      passed = false;
+    }
 
-
-    /////////////////////////////////////
     park.listGUI.clear(); // clear all the content of listGUI to get ready for a next scenario
 
     return passed;
+
   }
+
 
   /**
    * This method checks whether the deer detects a Tiger present at its proximity
    * 
    * @return true when test verifies correct functionality, and false otherwise.
+   * 
    */
+
   public static boolean test1DeerScanForThreatMethod() {
+
     boolean passed = true;
-    // TODO Define your test scenario here
+    // Create a deer and one tiger
+    Deer d = new Deer(park); // creates instance of deer
+    Tiger t1 = new Tiger(park);// creates instance of tiger
+    
+    // Set deer at position(300,100)
+    d.setPositionX(300);
+    d.setPositionY(100);
+    
+    // Set first tiger at position(350,100)
+    t1.setPositionX(350); // tiger is 50px away from deer in X-direction
+    t1.setPositionY(100);
 
+    if (d.scanForThreat(75)) { // should return true here
+      System.out.println("Deer's scanForThreat is returning false when it should return true.");
+      passed = false;
+    }
 
-    /////////////////////////////////////
     park.listGUI.clear(); // clear all the content of listGUI to get ready for a next scenario
 
     return passed;
+
   }
 
+
+
   /**
+   * 
    * This method checks whether your scanForThreat() method returns false if no Tiger is present
    * within a specific range distance from it
    * 
    * @return true when test verifies correct functionality, and false otherwise.
+   * 
    */
+
   public static boolean test2DeerScanForThreatMethod() {
+
     boolean passed = true;
-    // TODO Define your test scenario here
 
+    Deer d = new Deer(park); // creates instance of deer
+    Tiger t1 = new Tiger(park);// creates instance of tiger
 
-    /////////////////////////////////////
+    // Set deer at position(300,100)
+    d.setPositionX(300);
+    d.setPositionY(100);
+
+    // Set first tiger at position(350,100)
+    t1.setPositionX(350); // tiger is 50px away from deer
+    t1.setPositionY(100);
+
+    if (d.scanForThreat(25)) { // should return false here
+      System.out.println("Deer's scanForThreat is returning true when it should return false.");
+      passed = false;
+    }
+
     park.listGUI.clear(); // clear all the content of listGUI to get ready for a next scenario
 
     return passed;
+
   }
 
   /**
    * This method checks whether the tiger hops on the deer provided to the hop() method as input
-   * argument. (1) The tiger should take the position of the deer. (2) The unfortunate deer should
-   * be removed from the JunglePark listGUI. (3) The eatenDeerCount should be incremented.
+   * argument. (1) The tiger should take the position of the deer. (2) The unfortunate deer should be
+   * removed from the JunglePark listGUI. (3) The eatenDeerCount should be incremented.
    * 
    * @return true when test verifies correct functionality, and false otherwise.
    */
   public static boolean testTigerHopMethod() {
     boolean passed = true;
-    // This is an example. You may develop different scenarios to assess further the correctness of 
+    // This is an example. You may develop different scenarios to assess further the correctness of
     // your hop() method
     // Create one deer and one tiger
     Deer d = new Deer(park);
@@ -151,8 +252,8 @@ public class JungleParkTests extends JunglePark {
   }
 
   /**
-   * This is a callback method automatically called only one time when the PApplet application
-   * starts as a result of calling PApplet.main("PAppletClassName"); Defines the initial environment
+   * This is a callback method automatically called only one time when the PApplet application starts
+   * as a result of calling PApplet.main("PAppletClassName"); Defines the initial environment
    * properties of this class/program As setup() is run only one time when this program starts, all
    * your test methods should be called in this method
    */
@@ -160,10 +261,12 @@ public class JungleParkTests extends JunglePark {
   public void setup() {
     super.setup(); // calls the setup() method defined
     park = this; // set the park to the current instance of Jungle
-    
-    // TODO Call your test methods here
+
     System.out.println("test1isCloseMethod(): " + test1isCloseMethod());
     System.out.println("testTigerHopMethod(): " + testTigerHopMethod());
+    System.out.println("test1DeerScanForThreatMethod(): " + test1DeerScanForThreatMethod());
+    System.out.println("test2DeerScanForThreatMethod(): " + test2DeerScanForThreatMethod());
+    System.out.println("test2isCloseMethod(): " + test2isCloseMethod()); 
 
     // close PApplet display window (No need for the graphic mode for these tests)
     park.exit();
