@@ -37,8 +37,11 @@ public class JunglePark extends PApplet {
 
     listGUI = new ArrayList<ParkGUI>(); // create the listGUI ArrayList that would store all the
     // graphic objects (animals and buttons) that would be drawn on the display window
-
-
+    
+    listGUI.add(new AddAnimalButton("Tiger", 43,16, this));
+    listGUI.add(new AddAnimalButton("Deer", 129,16, this));
+    listGUI.add(new ClearButton(215,16, this));
+    
   }
 
   /**
@@ -62,8 +65,12 @@ public class JunglePark extends PApplet {
     // traverse the tigers array and draw each stored tiger
     for (int i = 0; i < listGUI.size(); i++) {
       listGUI.get(i).draw();
-      Animal animal = (Animal) listGUI.get(i);
-      animal.action();
+      if(listGUI.get(i) instanceof Animal) {
+        Animal animal = (Animal) listGUI.get(i);
+        animal.action();
+      }
+      
+      
       
 //      System.out.println(listGUI.get(i));
     }

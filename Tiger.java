@@ -65,7 +65,7 @@ public class Tiger extends Animal {
     ArrayList<ParkGUI> animals = processing.listGUI;
     for (ParkGUI food : animals) {
       if (food instanceof Deer)
-        if ((this).isClose((Deer) food, this.SCAN_RANGE)) {
+        if ((this).isClose((Deer) food, Tiger.SCAN_RANGE)) {
 //          System.out.println("Food found!: " + food);
           return food;
         }
