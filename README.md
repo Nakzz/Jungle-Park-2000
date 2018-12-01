@@ -9,6 +9,15 @@ Course: CS300, Fall 2018    Lecturer's Name: Gary Dahl
 Time spent: **4.2** hours spent in total
 
 ## Project Introduction
+JunglePark 2000 includes different animals. In addition to the Tigers, we will have Deers. After completing assignment, you may add other kinds of animals such as lions, giraffes, monkeys, etc. Note that animals within our JunglePark application share common properties and common features. But, they act differently in the park. Each animal has a specific behavior indeed. We are going to define and implement those similarities and differences in this assignment. We are also going to add new graphic components to our application, such as buttons. 
+
+
+The goals of this assignment include:
+
+* Use of inheritance and interfaces to better organize your code in a more clear and concise manner. Students would also enjoy the power of polymorphism in this assignment.
+* Gain experience with reviewing code for clarity, and improving the readability of your code in different ways.
+* Gain more experience with writing tests to assess the correctness of your program. All developed test methods will be run with graphic mode disabled and would assert the correctness of specific methods in your code.
+
 
 The following **required** functionality is completed:
 
