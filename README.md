@@ -21,7 +21,7 @@ Optional:
 * [ ] When the user clicks on any animal, it immediately jumps to a position that is centered around the mouse.  Can you come up with a solution that prevents this from happening, so that the animal (tiger or deer) only moves as a result of mouse dragging and not the initial click?
 * [ ] Actually, the only reaction that a deer performs when it detects a tiger at its proximity is to display an ALERT message. You can improve this passive behavior and make the deer move away to escape the threatening tiger, for instance.
 
-More information about this project can be found [here.](http://cs300-www.cs.wisc.edu/wp/index.php/2018/10/15/p06-math-game/) 
+More information about this project can be found [here.](http://cs300-www.cs.wisc.edu/wp/index.php/2018/10/09/p5-junglepark-2000/) 
 
 ## Video Walkthrough
 
